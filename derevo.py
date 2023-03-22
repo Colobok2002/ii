@@ -3,7 +3,7 @@ from main import read
 from config import *
 from sklearn import tree
 
-#MAMY
+
 base = read(target_file_name)
 data = dict()
 data[0], data[1] = [], []
