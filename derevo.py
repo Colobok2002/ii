@@ -64,7 +64,7 @@ def regresion_metod():
     clf.fit(arr, arrau_last_litel_table)
     y = clf.predict(arr)
     print(y)
-
+#---
 def neural_network_models():
     arr, arrau_last_litel_table = mas_for_derevo()
     ed = 0
