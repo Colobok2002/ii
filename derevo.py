@@ -1,8 +1,7 @@
-
 from main import read
 from config import *
 from sklearn import tree
-
+from sklearn.neural_network import MLPClassifier
 
 def mas_for_derevo():
 
@@ -66,6 +65,29 @@ def regresion_metod():
     y = clf.predict(arr)
     print(y)
 
+def neural_network_models():
+    arr, arrau_last_litel_table = mas_for_derevo()
+    ed = 0
+    nuli = 0
+    clf = MLPClassifier(solver='lbfgs', alpha=1e-5,
+    hidden_layer_sizes = (5, 2), random_state = 1)
+    clf.fit(arr, arrau_last_litel_table)
+    MLPClassifier(alpha=1e-05, hidden_layer_sizes=(5, 2), random_state=1,
+                  solver='lbfgs')
+    y = clf.predict(arr)
+
+    for i in range(len(y) - 1):
+        el1 = arrau_last_litel_table[i]
+        el2 = y[i]
+        if el1 == el2:
+            ed += 1
+        else:
+            nuli += 1
+
+
+    print(ed / len(y))
+
 if __name__ == '__main__':
-    klasifier_metod()
-    regresion_metod()
+    '''klasifier_metod()
+    regresion_metod()'''
+    neural_network_models()
