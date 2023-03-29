@@ -45,7 +45,7 @@ def klasifier_metod():
     clf.fit(arr, arrau_last_litel_table)
     y = clf.predict(arr)
 
-    for i in range(len(y)-1):
+    for i in range(len(y)):
         el1 = arrau_last_litel_table[i]
         el2 = y[i]
         if el1 == el2:
