@@ -70,7 +70,7 @@ def read(target_file_name):
     x_mas.append(base[7])
     print(x_mas)
     return base
-
+#5555
 
 
 def create_train_tet(base):
