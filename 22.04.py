@@ -1,11 +1,16 @@
 from random import random
+import math
 
 
-f_end = 0.5
-f_start = 0
-f_step = 0.01
-f = int((f_end - f_start) / f_step) + 1 
-print(f)
+# f_end = 0.5
+# f_start = 0
+# f_step = 0.01
+# f = int((f_end - f_start) / f_step) + 1 
+f = 0.1
+a_start = 0
+a_end = 0.1
+a_step = 0.0001
+a = int((a_end - a_start) // a_step)
 
 
 # fStartInt = int(f_start / f_step)
@@ -13,17 +18,17 @@ print(f)
 # for i in range(fStartInt, fEndInt):
 #     print(i * f_step)
 
-w = 0.3 
-tau = 200 
+w = 0.2 
+tau = 10 
 
 u = 0
 out = []
 
 
-for j in range(f):
+for j in range(a):
     # print(j)
     out.append([])
-    s = [[random() < f_start for jj in range(10)] for ii in range(10000)]
+    s = [[random() < f + a_start * math.sin(jj / 100) for jj in range(10)] for ii in range(10000)]
     # print(s[0])
     # print(sum(s[0]))
 
@@ -36,8 +41,8 @@ for j in range(f):
 
         out[j].append(new_u)   
 
-    f_start += f_step
-
+    # f_start += f_step
+    a_start += a_step
 # print(out) 
 # print(len(out)) 
 
