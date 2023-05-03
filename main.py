@@ -59,7 +59,6 @@ def read(target_file_name):
         else:
             koef = second_mas[index] / first_mas[index]
             koef_mas.append(koef)
-    print(koef_mas)
     x_mas = []
     x_mas.append(base[0])
     x_mas.append(base[5])
@@ -68,8 +67,36 @@ def read(target_file_name):
     x_mas.append(base[9])
     x_mas.append(base[4])
     x_mas.append(base[7])
-    print(x_mas)
-    return base
+
+    arr_local_employees = []
+    arr_local_sales = []
+    arr_ad_spending = []
+    arr_age = []
+    arr_industry_type = []
+    arr_industry_category = []
+    arr_international = []
+    arr_new_location = []
+
+    for arr in base:
+        for i in range(len(arr)):
+            if i == 0:
+                arr_local_employees.append(arr[i])
+            if i == 2:
+                arr_local_sales.append(arr[i])
+            if i == 5:
+                arr_ad_spending.append(arr[i])
+            if i == 10:
+                arr_age.append(arr[i])
+            if i == 8:
+                arr_industry_type.append(arr[i])
+            if i == 9:
+                arr_industry_category.append(arr[i])
+            if i == 4:
+                arr_international.append(arr[i])
+            if i == 6:
+                arr_new_location.append(arr[i])
+
+    return arr_local_sales, [arr_local_employees, arr_ad_spending, arr_age, arr_industry_type, arr_industry_category, arr_international, arr_new_location]
 #5555
 
 
@@ -215,15 +242,35 @@ def gradient_boosting_classifier(x, y, X_test, y_test):
     #         nuli += 1
     # print(ed/len(y_pred))
 
+def delArrs(arr1, arr2):
+    res = []
+    for i in range(len(arr1)):
+        if int(arr1[i]) == 0:
+            res.append(0)
+            continue
+        res.append(int(arr2[i]) / int(arr1[i]))
+    return res
+
+def linear_model_f(diabetes_X_train, diabetes_y_train):
+    import numpy as np
+    from sklearn import linear_model
+    regr = linear_model.LinearRegression()
+    transpArr = np.transpose(diabetes_X_train)
+    regr.fit(transpArr, diabetes_y_train)
+    print(regr.coef_)
+
+
 
 if __name__ == '__main__':
     # save(save_file_name,read(target_file_name))
-    trasform_file = read("MarketData.csv")
-    train, test = create_train_tet(trasform_file)
-    trainX = [s[:-1] for s in train]
-    trainY = [s[-1] for s in train]
-    testX = [s[:-1] for s in test]
-    testY = [s[-1] for s in test]
+    arr_local_sales, arrs = read("MarketData.csv")
+    delArr = delArrs(arr_local_sales, arrs[0])
+    linear_model_f(arrs, delArr)
+    # train, test = create_train_tet(trasform_file)
+    # trainX = [s[:-1] for s in train]
+    # trainY = [s[-1] for s in train]
+    # testX = [s[:-1] for s in test]
+    # testY = [s[-1] for s in test]
     #train_tree_classifier(trainX, trainY)
     #random_forest_classifier(trainX, trainY, testX, testY)
     #Neural_network_model(trainX, trainY, testX, testY)
