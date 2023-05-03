@@ -44,7 +44,7 @@ def network(inp, wpp, wpm, wmp, wmm, di, dpp, dpm, dmp, dmm, re, rpp, rpm, rmp, 
     out = []
     u = [0 for i in range(len(w))]
     tau = 10
-    # arr = []
+    # arr = [] i
 
     for i in range(len(inp)):
         out.append([])
