@@ -73,19 +73,6 @@ def network(inp, wpp, wpm, wmp, wmm, di, dpp, dpm, dmp, dmm, re, rpp, rpm, rmp, 
                 out[-1].append(False)
     return out
 
-def draw(data):
-    import matplotlib.pyplot as plt
-    import numpy as np
-
-    # convert Boolean values to integers
-    data = np.array(data, dtype=int)
-
-    # plot heatmap
-    plt.plot(data)
-
-    # show plot
-    plt.show()
-
 def network_2(inp, r, d):
     import matplotlib.pyplot as plt
     import numpy as np

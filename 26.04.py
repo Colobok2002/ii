@@ -75,8 +75,8 @@ def main():
     inp_arr, w, d = get_data()
     out = network(inp_arr, w, d)
     # for row in out:
-        # print(sum(row))
-    # draw(out)
+    #     print(sum(row))
+    draw(out)
 
 
 if __name__ == "__main__":
